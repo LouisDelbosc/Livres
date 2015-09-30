@@ -63,3 +63,48 @@ You can identify 4 main subelements of a reinforcement learning system:
   - Used for planning
   - Example: (state, action) => (next state, reward)
   - Model-based methods are opposed to model-free methods that are explicitly *trial-and-error learners*
+
+###1.4 Limitations and Scope
+
+Value function is not mandatory. For example evolutionnary methods can work without it.
+Evolutionnary methods (genetic algorithm) have advantages on problems in which the learning agent cannot accurately sense the state of its environment.
+
+Our focus is on reinforcement learning that involve learning while interacting with the environment.
+Evolutionnary methods do not act this way.
+
+Other methods like *policy gradient methods* do not have any value function but still are reinforcement.
+They estimate the directions the parameters should be adjusted in order to most rapidly improve a policy's performance.
+
+Some comment on reinforcement learning and optimization methods because it is a source of misunderstanding.
+Trying to maximized a quantity does not mean that that quantity is ever maximized.
+Reinforcement learning always try to increase the amount of reward it receives but many factors can prevent it from achieving the maxium, even if one exists.
+**Optimization is not the same as optimality.**
+
+###1.5 An extended example: Tic-Tac-Toe
+
+Better to read it, page 24
+
+###1.6 History of Reinforcement Learning
+
+look at Szita
+
+###1.8 Bibliographical Remarks
+
+Books from (sometime he gives only the author and the date):
+- Coverage of reinforcement learning
+  - Szepesvari (2010)
+  - Bertsekas and Tsitsklis (1996)
+  - Kaelbling (1993a)
+- Control or operation research perspective
+  - Si et al. (2004) (written like that in the book)
+  - Powell (2011)
+  - Lewis and Liu (2012)
+- Machine Learning
+  - Sutton (1992)
+  - Kaebling (1996)
+- Useful surveys
+  - Barto (1995b)
+  - Kaelbling, Littman, Moore (1996)
+  - Keerthi and Ravindran (1997)
+- Recent developments
+  - Weiring and van Otterlo (2012)
