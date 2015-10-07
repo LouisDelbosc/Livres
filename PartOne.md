@@ -113,3 +113,17 @@ InfiniteSum ( &alpha;k(a)² ) < &infin;
 
 The first condition is required to guarantees that the steps are large enough to eventually overcome any initial conditions or random fluctuations.
 The seoncd condition guarantees that eventually the steps become small enough to assure convergence
+
+###2.5 Optimistic Initial Values
+
+All the methods from above are biased by their initial estimates (Q1(a) or &epsilon; for example).
+The bias disappears once all actions have been selected at least once but for methods with constant &alpha;, the bias is permanent though decreasing over time.
+In practice this kind of bias can sometimes be very helpful because it is an easy way to supply some prior knowledge about what level of rewards can be expected.
+
+We can force the system to explore by fixing high initial value (for example Q1(a) = 5) and if the reward is less than the initial value, then it will continue to explore (since max Q(a) is still within the actions not chosen).
+It is called *optimistic initial values*.
+
+It is not well suited to nonstationary problems because its drive for exploration is inherently temporary. If the task changes, creating a renewed need for exploration, this method cannot help.
+Anyway, the beginning of time occurs only once so we should not focus on it too much.
+
+###2.6 Upper-Confidence-Bound Action Selection
