@@ -152,3 +152,12 @@ Once can gain a deeper insight into this algorithm by understanding it as a stoc
 The idea is to create an other parameter ( *preference* ) to chose which action to do.
 
 ###2.8 Associative Search
+
+To simplify our explanation, we only considered only *nonassociative* tasks, in which there is no need to associate different actions with different situations.
+In a general reinforcement learning task there is more than one situation, and the goal is to learn a policy: a mapping from situations to the actions that are best in those situations.
+
+*Associative seach* task involves both **trial-and-error** learning in the form of *search* for the best actions and *association* of these actions with the situations in which they are best.
+
+```
+They are like the full reinforcement learning problem in that they involve learning a policy, but like our version of the n-armed bandit problem in that each action affect the next situation as well as the reward, then we have the full reinforcement learning problem.:w
+```
