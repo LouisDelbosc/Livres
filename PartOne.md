@@ -87,7 +87,10 @@ The general form is :
 **NewEstimate <-- OldEstimate + StepSize [ Target - OldEstimate ]**
 
 ```quote
-The expression *[Target - OldEstimate]* is an *error* in the estimate. It is reduced by Taking a step toward the "Target". The target is presumed to indicatea desirable direction in which to move, though it may be noisy. In the case above, for example, the target is the k-th reward
+The expression *[Target - OldEstimate]* is an *error* in the estimate.
+It is reduced by Taking a step toward the "Target".
+The target is presumed to indicatea desirable direction in which to move, though it may be noisy.
+In the case above, for example, the target is the k-th reward
 ```
 The *StepSize* parameter is 1/k in our example but can be otherwise. It was a meaningful impact on the system.
 
@@ -140,13 +143,17 @@ It is very effective on n-armed problems but it is hard to extend this methods t
 ###2.7 Gradient Bandits
 
 ```
-So far in this capther we have considered methos that estimate action avalues and use those estimates to select actions. This is often a good approach, but it is not the only one possible. In this section we consider learning a numerical preference Ht(a) for each action a. The larger the preference, the more often that action is taken, but the preference has no interpretation in terms of reward.
+So far in this capther we have considered methos that estimate action avalues and use those estimates
+to select actions. This is often a good approach, but it is not the only one possible. In this section
+we consider learning a numerical preference Ht(a) for each action a. The larger the preference, the more
+often that action is taken, but the preference has no interpretation in terms of reward.
 ```
 
 *Preference* is a complicated subject and I invite you to look at the equation in page 57 to 60 in the book.
 
 ```
-Once can gain a deeper insight into this algorithm by understanding it as a stochastic approximation to gradient ascent
+Once can gain a deeper insight into this algorithm by understanding it as a stochastic approximation
+to gradient ascent
 ```
 
 The idea is to create an other parameter ( *preference* ) to chose which action to do.
@@ -159,5 +166,7 @@ In a general reinforcement learning task there is more than one situation, and t
 *Associative seach* task involves both **trial-and-error** learning in the form of *search* for the best actions and *association* of these actions with the situations in which they are best.
 
 ```
-They are like the full reinforcement learning problem in that they involve learning a policy, but like our version of the n-armed bandit problem in that each action affect the next situation as well as the reward, then we have the full reinforcement learning problem.:w
+They are like the full reinforcement learning problem in that they involve learning a policy,
+but like our version of the n-armed bandit problem in that each action affect the next 
+situation as well as the reward, then we have the full reinforcement learning problem.
 ```
