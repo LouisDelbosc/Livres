@@ -89,3 +89,5 @@ The general form is :
 ```quote
 The expression *[Target - OldEstimate]* is an *error* in the estimate. It is reduced by Taking a step toward the "Target". The target is presumed to indicatea desirable direction in which to move, though it may be noisy. In the case above, for example, the target is the k-th reward
 ```
+
+###2.4 Tracking NonStionary Problem
