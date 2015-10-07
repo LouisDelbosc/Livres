@@ -50,16 +50,16 @@ At = argmax(a) Qt(a)
 *argmax(a)* denotes the value of a at which the expression that follows is maximized
 Greedy action selection always exploits current knowledge to maximize immediate reward.
 
-A simple alternative is to behave greedily most of the time but every once in a while, say with small probability *e*, instead to select randomly from amongst all the actions with equal probability
-We call it the *e-greedy* methods
+A simple alternative is to behave greedily most of the time but every once in a while, say with small probability &epsilon;, instead to select randomly from amongst all the actions with equal probability
+We call it the *&epsilon;-greedy* methods
 
 *Advantage*:
 - On a long run, all Qt(a) will converge to q(a)
 
-Chosing the *e* (ie probability to not play the estimated maximum value action) is  important
-For example if we take a very low *e* then we will explore slowly, and we will converge to the real maximum later.
-But if we chose a high *e* then we might find it faster but after we will only play the best action 1-*e* (because *e* time we will play a random move wich is not the estimated max).
-A fix at this issue is to change the *e* over the time. High in the beginning but decreasing over time so we explore a lot early and we play the optimal move at the end.
+Chosing the &epsilon; (ie probability to not play the estimated maximum value action) is  important
+For example if we take a very low &epsilon; then we will explore slowly, and we will converge to the real maximum later.
+But if we chose a high &epsilon; then we might find it faster but after we will only play the best action 1-&epsilon; (because &epsilon; time we will play a random move wich is not the estimated max).
+A fix at this issue is to change the &epsilon; over the time. High in the beginning but decreasing over time so we explore a lot early and we play the optimal move at the end.
 
 Of course this is only available if we have a static problem which is not the case is many reinforcement learning problems.
 
@@ -89,5 +89,27 @@ The general form is :
 ```quote
 The expression *[Target - OldEstimate]* is an *error* in the estimate. It is reduced by Taking a step toward the "Target". The target is presumed to indicatea desirable direction in which to move, though it may be noisy. In the case above, for example, the target is the k-th reward
 ```
+The *StepSize* parameter is 1/k in our example but can be otherwise. It was a meaningful impact on the system.
 
 ###2.4 Tracking NonStionary Problem
+
+If we want our Qk(a) not to be too influenced by the past, we can change our StepSize by a static value.
+Let's define *StepSize* as &alpha;
+
+Qk+1 = Qk + &alpha;[Rk - Qk]
+     = &alpha;Rk + (1 - &alpha;)Qk
+
+We call this a weighted average because the sum of the weights is :
+(1 - &alpha;)^k + Sum ( &alpha;(1 - &alpha;)^(k-i) ) = 1
+
+This is called and *exponential, recency-weighted average.*
+Sometimes it is convenient to vart the step-size parameter from ste to step.
+
+A well-known result in stochastic approximation theory gives us the conditions required to assure convergence with probability 1
+
+InfiniteSum ( &alpha;k(a) ) = &infin;
+and
+InfiniteSum ( &alpha;k(a)² ) < &infin;
+
+The first condition is required to guarantees that the steps are large enough to eventually overcome any initial conditions or random fluctuations.
+The seoncd condition guarantees that eventually the steps become small enough to assure convergence
