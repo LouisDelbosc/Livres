@@ -138,3 +138,15 @@ This is called *upper confidence bound* action selection.
 It is very effective on n-armed problems but it is hard to extend this methods to more general reinforcement learning settings.
 
 ###2.7 Gradient Bandits
+
+```
+So far in this capther we have considered methos that estimate action avalues and use those estimates to select actions. This is often a good approach, but it is not the only one possible. In this section we consider learning a numerical preference Ht(a) for each action a. The larger the preference, the more often that action is taken, but the preference has no interpretation in terms of reward.
+```
+
+*Preference* is a complicated subject and I invite you to look at the equation in page 57 to 60 in the book.
+
+```
+Once can gain a deeper insight into this algorithm by understanding it as a stochastic approximation to gradient ascent
+```
+
+The idea is to create an other parameter ( *preference* ) to chose which action to do.
