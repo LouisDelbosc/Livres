@@ -150,3 +150,5 @@ Once can gain a deeper insight into this algorithm by understanding it as a stoc
 ```
 
 The idea is to create an other parameter ( *preference* ) to chose which action to do.
+
+###2.8 Associative Search
