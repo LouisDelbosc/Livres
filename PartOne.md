@@ -127,3 +127,14 @@ It is not well suited to nonstationary problems because its drive for exploratio
 Anyway, the beginning of time occurs only once so we should not focus on it too much.
 
 ###2.6 Upper-Confidence-Bound Action Selection
+
+The greedy actions are those that look best at present, but some of the other actions may actuallybe better.
+We can select our action with an other equation than (E1).
+At = argmax(a) [ Qt(a) + c * Root( ln t / Nt(a) ) ]
+(see page 55, equation 2.8 from pdf for a more visible version of the equation)
+
+This is called *upper confidence bound* action selection.
+
+It is very effective on n-armed problems but it is hard to extend this methods to more general reinforcement learning settings.
+
+###2.7 Gradient Bandits
