@@ -27,39 +27,39 @@ It is essential to know when to explore and when to exploit.
 ###2.2 Action-Value Methods
 
 **Notation**:
-- a: action
-- q(a): The value of action
-- Qt(a): the estimated value on the *t*-th time step of a
-- Rt: the reward the *t*-th time
-- Nt(a): the time a has been chosen at time t
+- $$a$$: action
+- $$q(a)$$: The value of action
+- $$Q_t(a)$$: the estimated value on the *t*-th time step of a
+- $$R_t$$: the reward the *t*-th time
+- $$N_t(a)$$: the time a has been chosen at time t
 
 We can estimate Qt(a) as :
 
-Qt(a) = Sum(1,Nt(a)) Ri / Nt(a)
+$$Q_t(a) = \sum_{1}^{N_t(a)}\frac{R_i}{N_t(a)}$$
 
 Or the mean of the Reward
 
-If Nt(a) = 0, then we define Qt(a) instead as some default value such as Q1(a) = 0
+If $$N_t(a)$$ = 0, then we define $$Q_t(a)$$ instead as some default value such as $$Q_1(a)$$ = 0
 
 The simplest action selection rule is to select at *t* the highest estimated action value.
 It is the *greedy* action.
 
 
-At = argmax(a) Qt(a)
+$$A_t = argmax_a Qt(a)$$
 
-*argmax(a)* denotes the value of a at which the expression that follows is maximized
+$$argmax(a)$$ denotes the value of a at which the expression that follows is maximized
 Greedy action selection always exploits current knowledge to maximize immediate reward.
 
-A simple alternative is to behave greedily most of the time but every once in a while, say with small probability &epsilon;, instead to select randomly from amongst all the actions with equal probability
-We call it the *&epsilon;-greedy* methods
+A simple alternative is to behave greedily most of the time but every once in a while, say with small probability $$\epsilon$$, instead to select randomly from amongst all the actions with equal probability.
+We call it the *$$\epsilon$$-greedy* methods
 
 *Advantage*:
-- On a long run, all Qt(a) will converge to q(a)
+- On a long run, all $$Q_t(a)$$ will converge to $$q(a)$$
 
-Choosing the &epsilon; (IE probability to not play the estimated maximum value action) is  important
-For example if we take a very low &epsilon; then we will explore slowly, and we will converge to the real maximum later.
-But if we chose a high &epsilon; then we might find it faster but after we will only play the best action 1-&epsilon; (because &epsilon; time we will play a random move which is not the estimated max).
-A fix at this issue is to change the &epsilon; over the time. High in the beginning but decreasing over time so we explore a lot early and we play the optimal move at the end.
+Choosing the $$\epsilon$$ (IE probability to not play the estimated maximum value action) is  important
+For example if we take a very low $$\epsilon$$ then we will explore slowly, and we will converge to the real maximum later.
+But if we chose a high $$\epsilon$$ then we might find it faster but after we will only play the best action 1-$$\epsilon$$ (because $$\epsilon$$ time we will play a random move which is not the estimated max).
+A fix at this issue is to change the $$\epsilon$$ over the time. High in the beginning but decreasing over time so we explore a lot early and we play the optimal move at the end.
 
 Of course this is only available if we have a static problem which is not the case is many reinforcement learning problems.
 
@@ -67,19 +67,21 @@ Of course this is only available if we have a static problem which is not the ca
 
 Since each action as to keep a records of the *rewards*
 
-Qt(a) = [ R1 + R2 + ... + R(Nt(a)) ] / Nt(a)
+$$Q_t(a) = \frac{[R_1 + R_2 + \dotsm + R_{N_t(a)}]}{N_t(a)}$$
 
 
 You can't implement this equation like this because the more reward you'll get, the more memory you'll need.
 Hopefully there is a trick to calculate easily Qt(a).
 
-Qk+1 = 1/k * Sum (Ri)
-     = Qk + 1/k [ Rk - Qk ]
+$$\begin{align}
+Q_{k+1} &= \frac{1}{k} \sum_{i=1}^{k+1} R_i\\
+        &= Q_k + \frac{1}{k} [R_k - Q_k]\\
+\end{align}$$
 
 
-We can have Qt(a) with the previous estimation of q(a).
+We can have $$Q_t(a)$$ with the previous estimation of $$q(a)$$.
 We just need to store the iteration (k), and the previous reward.
-We also need an arbitrary Q1
+We also need an arbitrary $$Q_1$$
 
 The general form is :
 **NewEstimate <-- OldEstimate + StepSize [ Target - OldEstimate ]**
@@ -93,34 +95,38 @@ The *StepSize* parameter is 1/k in our example but can be otherwise. It was a me
 
 ###2.4 Tracking NonStionary Problem
 
-If we want our Qk(a) not to be too influenced by the past, we can change our StepSize by a static value.
-Let's define *StepSize* as &alpha;
+If we want our $$Q_k(a)$$ not to be too influenced by the past, we can change our StepSize by a static value.
+Let's define *StepSize* as $$\alpha$$
 
-Qk+1 = Qk + &alpha;[Rk - Qk]
-     = &alpha;Rk + (1 - &alpha;)Qk
+$$\begin{align}
+Q_{k+1} &= Q_k + \alpha[R_k - Q_k]\\
+        &= \alpha R_k + (1 - \alpha)Q_k\\
+        &= \dotsi\\
+        &= (1 - \alpha)^k Q_1 + \sum_{i=1}^{k} \alpha (1 - \alpha)^{k-1} R_i
+\end{align}$$
 
 We call this a weighted average because the sum of the weights is :
-(1 - &alpha;)^k + Sum ( &alpha;(1 - &alpha;)^(k-i) ) = 1
+$$(1 - \alpha)^k + \sum_{i=1}^{k} \alpha (1-\alpha)^{k-i} = 1$$
 
 This is called and *exponential, recency-weighted average.*
 Sometimes it is convenient to vart the step-size parameter from step to step.
 
 A well-known result in stochastic approximation theory gives us the conditions required to assure convergence with probability 1.
 
-InfiniteSum ( &alpha;k(a) ) = &infin;
-and
-InfiniteSum ( &alpha;k(a)² ) < &infin;
+$$\sum_{k=1}^{\infty} \alpha_k(a) = \infty$$
+**and**
+$$\sum_{k=1}^{\infty} \alpha^2_k(a) < \infty$$
 
 The first condition is required to guarantees that the steps are large enough to eventually overcome any initial conditions or random fluctuations.
 The second condition guarantees that eventually the steps become small enough to assure convergence
 
 ###2.5 Optimistic Initial Values
 
-All the methods from above are biased by their initial estimates (Q1(a) or &epsilon; for example).
-The bias disappears once all actions have been selected at least once but for methods with constant &alpha;, the bias is permanent though decreasing over time.
+All the methods from above are biased by their initial estimates ($$Q_1(a)$$ or $$\epsilon$$ for example).
+The bias disappears once all actions have been selected at least once but for methods with constant $$\alpha$$, the bias is permanent though decreasing over time.
 In practice this kind of bias can sometimes be very helpful because it is an easy way to supply some prior knowledge about what level of rewards can be expected.
 
-We can force the system to explore by fixing high initial value (for example Q1(a) = 5) and if the reward is less than the initial value, then it will continue to explore (since max Q(a) is still within the actions not chosen).
+We can force the system to explore by fixing high initial value (for example $$Q_1(a) = 5$$) and if the reward is less than the initial value, then it will continue to explore (since $$max_a Q(a)$$ is still within the actions not chosen).
 It is called *optimistic initial values*.
 
 It is not well suited to non-stationary problems because its drive for exploration is inherently temporary. If the task changes, creating a renewed need for exploration, this method cannot help.
@@ -130,7 +136,9 @@ Anyway, the beginning of time occurs only once so we should not focus on it too 
 
 The greedy actions are those that look best at present, but some of the other actions may actually be better.
 We can select our action with an other equation than (E1).
-At = argmax(a) [ Qt(a) + c * Root( ln t / Nt(a) ) ]
+$$
+A_t = argmax_a \left[ Q_t(a) + c \sqrt{\frac{ln(t)}{N_t(a)}}\right]
+$$
 (see page 55, equation 2.8 from pdf for a more visible version of the equation)
 
 This is called *upper confidence bound* action selection.
@@ -140,7 +148,7 @@ It is very effective on n-armed problems but it is hard to extend this methods t
 ###2.7 Gradient Bandits
 
 
-So far in this capther we have considered methos that estimate action avalues and use those estimates
+So far in this chapter we have considered methods that estimate action values and use those estimates
 to select actions. This is often a good approach, but it is not the only one possible. In this section
 we consider learning a numerical preference Ht(a) for each action a. The larger the preference, the more
 often that action is taken, but the preference has no interpretation in terms of reward.
