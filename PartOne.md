@@ -34,9 +34,9 @@ It is essential to know when to explore and when to exploit.
 - Nt(a): the time a has been chosen at time t
 
 We can estimate Qt(a) as :
-```
+
 Qt(a) = Sum(1,Nt(a)) Ri / Nt(a)
-```
+
 Or the mean of the Reward
 
 If Nt(a) = 0, then we define Qt(a) instead as some default value such as Q1(a) = 0
@@ -44,9 +44,9 @@ If Nt(a) = 0, then we define Qt(a) instead as some default value such as Q1(a) =
 The simplest action selection rule is to select at *t* the highest estimated action value.
 It is the *greedy* action.
 
-```
+
 At = argmax(a) Qt(a)
-```
+
 *argmax(a)* denotes the value of a at which the expression that follows is maximized
 Greedy action selection always exploits current knowledge to maximize immediate reward.
 
@@ -67,17 +67,15 @@ Of course this is only available if we have a static problem which is not the ca
 
 Since each action as to keep a records of the *rewards*
 
-```
 Qt(a) = [ R1 + R2 + ... + R(Nt(a)) ] / Nt(a)
-```
+
 
 You can't implement this equation like this because the more reward you'll get, the more memory you'll need.
 Hopefully there is a trick to calculate easily Qt(a).
 
-```
 Qk+1 = 1/k * Sum (Ri)
      = Qk + 1/k [ Rk - Qk ]
-```
+
 
 We can have Qt(a) with the previous estimation of q(a).
 We just need to store the iteration (k), and the previous reward.
@@ -86,12 +84,11 @@ We also need an arbitrary Q1
 The general form is :
 **NewEstimate <-- OldEstimate + StepSize [ Target - OldEstimate ]**
 
-```quote
 The expression *[Target - OldEstimate]* is an *error* in the estimate.
 It is reduced by Taking a step toward the "Target".
 The target is presumed to indicatea desirable direction in which to move, though it may be noisy.
 In the case above, for example, the target is the k-th reward
-```
+
 The *StepSize* parameter is 1/k in our example but can be otherwise. It was a meaningful impact on the system.
 
 ###2.4 Tracking NonStionary Problem
@@ -142,19 +139,18 @@ It is very effective on n-armed problems but it is hard to extend this methods t
 
 ###2.7 Gradient Bandits
 
-```
+
 So far in this capther we have considered methos that estimate action avalues and use those estimates
 to select actions. This is often a good approach, but it is not the only one possible. In this section
 we consider learning a numerical preference Ht(a) for each action a. The larger the preference, the more
 often that action is taken, but the preference has no interpretation in terms of reward.
-```
 
 *Preference* is a complicated subject and I invite you to look at the equation in page 57 to 60 in the book.
 
-```
+
 Once can gain a deeper insight into this algorithm by understanding it as a stochastic approximation
 to gradient ascent
-```
+
 
 The idea is to create an other parameter ( *preference* ) to chose which action to do.
 
@@ -165,8 +161,8 @@ In a general reinforcement learning task there is more than one situation, and t
 
 *Associative search* task involves both **trial-and-error** learning in the form of *search* for the best actions and *association* of these actions with the situations in which they are best.
 
-```
+
 They are like the full reinforcement learning problem in that they involve learning a policy,
 but like our version of the n-armed bandit problem in that each action affect the next 
 situation as well as the reward, then we have the full reinforcement learning problem.
-```
+
