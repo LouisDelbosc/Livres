@@ -23,7 +23,7 @@ There are three most important distinguishing feature of reinforcement learn  pr
 
 *How to define a reinforcement learning method:*
 **Create a agent interacting with its environment to achieve a goal**
-The goald must be related to the state of the environment
+The goal must be related to the state of the environment
 Three aspects :
 - sensation
 - action
@@ -37,7 +37,7 @@ This dilemma does not appear in supervised and unsupervised learning (at least i
 
 ###1.3 Elements of Reinforcement Learning
 
-You can identify 4 main subelements of a reinforcement learning system:
+You can identify 4 main sub-elements of a reinforcement learning system:
 - a *policy*
   - It defines the way our agent behave
   - It is a mapping from perceived state of the environment to actions to be taken when in those states
@@ -50,7 +50,7 @@ You can identify 4 main subelements of a reinforcement learning system:
     - the current state of the agent's environment
   - The reward signal is the primary basis for altering the policy
     - If policy A give low reward => policy must be change to choose other action in this situation
-  - It general, rewardsignals may be stochastic functions of the state of the environment and the actions taken
+  - It general, reward signals may be stochastic functions of the state of the environment and the actions taken
 - a *value function*
   - Its goal is to evaluate a position to the long run
   - Value of state = total amount of reward an agent can expect to accumulate over the future, starting from that state
@@ -58,7 +58,7 @@ You can identify 4 main subelements of a reinforcement learning system:
   - But to evaluate a position we look at the value
   - Hard to determine and have to be change overtime to stick to the environment
   - Value estimation has a central role in reinforcement learning
-- a *model* of the environment (optionnal)
+- a *model* of the environment (optional)
   - It mimics the behavior of the environment
   - Used for planning
   - Example: (state, action) => (next state, reward)
@@ -66,18 +66,18 @@ You can identify 4 main subelements of a reinforcement learning system:
 
 ###1.4 Limitations and Scope
 
-Value function is not mandatory. For example evolutionnary methods can work without it.
-Evolutionnary methods (genetic algorithm) have advantages on problems in which the learning agent cannot accurately sense the state of its environment.
+Value function is not mandatory. For example evolutionary methods can work without it.
+Evolutionary methods (genetic algorithm) have advantages on problems in which the learning agent cannot accurately sense the state of its environment.
 
 Our focus is on reinforcement learning that involve learning while interacting with the environment.
-Evolutionnary methods do not act this way.
+Evolutionary methods do not act this way.
 
 Other methods like *policy gradient methods* do not have any value function but still are reinforcement.
 They estimate the directions the parameters should be adjusted in order to most rapidly improve a policy's performance.
 
 Some comment on reinforcement learning and optimization methods because it is a source of misunderstanding.
 Trying to maximized a quantity does not mean that that quantity is ever maximized.
-Reinforcement learning always try to increase the amount of reward it receives but many factors can prevent it from achieving the maxium, even if one exists.
+Reinforcement learning always try to increase the amount of reward it receives but many factors can prevent it from achieving the maximum, even if one exists.
 **Optimization is not the same as optimality.**
 
 ###1.5 An extended example: Tic-Tac-Toe
