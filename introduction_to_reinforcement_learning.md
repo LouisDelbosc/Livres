@@ -17,7 +17,7 @@ The learner is not told which actions to take, as in many forms of machine learn
 
 There are three most important distinguishing feature of reinforcement learn  problems.
 - being closed-loop in an essential way
-- not havin direct instructions as to what actions to take
+- not having direct instructions as to what actions to take
 - where the consequences of actions, including reward signals, play out over extended time periods
 
 
