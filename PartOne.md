@@ -50,7 +50,7 @@ $$A_t = argmax_a Qt(a)$$
 $$argmax(a)$$ denotes the value of a at which the expression that follows is maximized
 Greedy action selection always exploits current knowledge to maximize immediate reward.
 
-A simple alternative is to behave greedily most of the time but every once in a while, say with small probability $$\epsilon$$, instead to select randomly from amongst all the actions with equal probability.
+A simple alternative is to behave greedily most of the time but every once in a while, say with small probability $$\epsilon$$, instead to select randomly from among all the actions with equal probability.
 We call it the *$$\epsilon$$-greedy* methods
 
 *Advantage*:
