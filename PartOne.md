@@ -67,7 +67,7 @@ Of course this is only available if we have a static problem which is not the ca
 
 Since each action as to keep a records of the *rewards*
 
-$$Q_t(a) = \frac{[R_1 + R_2 + \dotsm + R_{N_t(a)}]}{N_t(a)}$$
+$$Q_t(a) = \frac{[R_1 + R_2 + ... + R_{N_t(a)}]}{N_t(a)}$$
 
 
 You can't implement this equation like this because the more reward you'll get, the more memory you'll need.
