@@ -74,7 +74,7 @@ There is two kind of problems:
 We will use an other mathematical definition of *returns* to simplify both problems
 
 $$\begin{align}
-G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = \sum_{k=0}^{infty} \gamma^2 R_{t+k+1}
+G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = \sum_{k=0}^{\infty} \gamma^2 R_{t+k+1}
 
 0 \leq \gamma \leq 1
 \end{align}$$
@@ -180,7 +180,7 @@ p(s'|s,a) = P_r{S_{t+1} = s' | S_t = s, A_t = a} = \sum_{r \in \mathcal{R}} p(s'
 
 - the expected rewards for *state-action-next-state triple*
 $$\begin{align}
-r(s,a,s') = \mathbb{E} \left[R_{t+1} | S_t = s, A_t = a, S_{t+1} = s' \right] = \frac{\sum_{r \in \mathcal{R}} rp(s', r| s, a)}{p(s'|s, a)}
+r(s,a,s') = \mathbb{E} [R_{t+1} | S_t = s, A_t = a, S_{t+1} = s'] = \frac{\sum_{r \in \mathcal{R}} rp(s', r| s, a)}{p(s'|s, a)}
 \end{align}$$
 
 ###3.7 Value Functions
@@ -223,10 +223,10 @@ dynamic programming is thath they satisfy particular recursive relationship.
 
 $$\begin{align}
 v_{\pi}(s) = \mathbb{E}_{\pi} [G_t| S_t = s] \\
-         & = \mathbb{E}_{\pi} \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right] \\
-         & = \mathbb{E}_{\pi} \left[ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} | S_t = s \right] \\
-         & = ... \\
-         & = \sum_{a} \pi(a|s) \sum_{s', r} p(s', r|s, a) [r + \gamma v_{\pi}(s')]
+          &= \mathbb{E}_{\pi} \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right] \\
+          &= \mathbb{E}_{\pi} \left[ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} | S_t = s \right] \\
+          &= ... \\
+          &= \sum_{a} \pi(a|s) \sum_{s', r} p(s', r|s, a) [r + \gamma v_{\pi}(s')]
 \end{align}$$
 
 This equation is the *Bellman equation for* $$v_{\pi}$$.
@@ -245,3 +245,67 @@ We show in subsequent chapters how this Bellman equation forms the basis of a nu
 to compute, approxumate, and learn $$v_{\pi}$$.
 
 ###3.8 Optimal Value Functions
+
+Solving a reinforcement learning task means finding a policy that achieves a lot of reward
+over the long run.
+For finite MDPs, we can define an :
+- *optimal policy*: 
+  - for all $$s \in \mathcal{S}$$
+  - $$\pi_*$$ is an optimal policy if for all $$\pi'$$ : $$v_{\pi_$}(s) \geq v_{\pi'}(s)$$
+
+- *optimal state-value function* :
+  - for all $$s \in \mathcal{S}$$
+
+$$v_*(s) = max_{\pi} v_{\pi}(s)$$
+
+- *optimal action-value function* :
+  - for all $$s \in \mathcal{S}$$ and $$a \in \mathcall{A(s)}$$
+
+$$q_*(s,a) = max_{\pi} q_{\pi}(s,a)
+
+- We can write $$q_*$$ in terms of $$v_*$$ as follows:
+
+$$q_*(s,a) = \mathbb{E} [R_{t+1} + \gamma v_*(S_{t+1}) | S_t = s, A_t = a]$$
+
+Because $$v_*$$ is the value function for a policy, it must satisfy the condition given by
+the Bellman equation for state values.
+Because it is the optimal value function $$v_*$$'s consistency condition can be written
+in a special form without reference to any specific policy.
+
+This is the Bellman equation for $$v_*$$ or the **Bellman optimality equation**.
+$$\begin{align}
+v_*(s) = \max_{a \in \mathcal{A(s)}} q_{\pi_*}(s, a) \\
+      &= \max_{a} \mathbb{E}_{\pi_*} [G_t | S_t = s, A_t = a] \\
+      &= \max_{a} \mathbb{E}_{\pi_*} [\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s, A_t = a] \\
+      &= ... \\
+      &= \max_{a} \mathbb{E}_{\pi_*} [R_{t+1} + \gamma v_*(S_{t+1}) | S_t = s, A_t = a] \\
+      &= \max_{a \in \mathcal{A(s)}} \sum_{s',r} p(s',r|s,a)[r + \gamma v_*(s')]
+\end{align}$$
+
+The last two equation are two forms of the Bellman optimality equation for $$v_*$$
+The Bellman optimality equation for $$q_*$$ is
+
+$$\begin{align}
+q_*(s,a) = \mathbb{E} [R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a') | S_t = s, A_t = a] \\
+        &= \sum_{s',r} p(s',r |s, a) [ r+ \gamma \max_{a'} q_*(s', a') ]
+\end{align}$$
+
+For finite MDPs, the Bellman optimality equation has a unique solution independent of the policy.
+The Bellman optimality equation is actually a system of equation, one for each state, 
+so if there are N states, then there are N equations in N unknowns.
+
+Once one has $$v_*$$, it is easy to determine an optimal policy.
+For each state s, there will be one or more actions at which the maximum is obtained in the
+*Bellman optimality equation*. Any policy that assigns non-zero probability only to these
+actions is an optimal policy.
+
+Having $$q_*$$ make it even easier: for any state s, it can simple find any action that 
+maximizes $$q_*(s,a)$$. The action-value function effectively caches the results of all
+one-step-ahead searches.
+
+Many different decision-making methods can be viewed as ways of approximately solving the
+Bellman optimality equation.
+The methods of dynamic programming can be related even more closely to the Bellman
+optimality equation. Many reinforcement learning methods can be clearly understood as
+approximately solving the Bellman optimality equation, using actual experience transitions
+in place of knowledge of the expected transitions.
