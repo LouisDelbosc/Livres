@@ -1,6 +1,4 @@
 {
-    "plugins": [
-        "mathjax-beta"
-    ],
+    "plugins": [],
     "pluginsConfig": {}
 }
