@@ -85,3 +85,22 @@ The discrount rate determines the present value of future rewards.
 The higher $$\gamma$$ is, the more strongly the objective takes futures rewards into account
 
 ###3.4 Unified Notation For Episodic and Continuing Tasks
+
+To unified episodic both reinforcement learning task (episodic and continuing)
+we will refer to a episodic state $$S_{t,i}$$ which is a state at time t in episode i
+at $$S_t$$. We will almost always be considering a particular episode, or stating
+stomething that is true for all episodes.
+
+Also we need an other convention to unified both notation.
+In continuing task we have a infinite sum. 
+Considering episode termination to be the entering of a special *absorbing state*
+that transition only to itself and generates only rewards of zero.
+
+![Figure 2: state transition diagram for episodic task](images/abs_state.pgn)
+
+We can now define the return as :
+$$\begin{align}
+G_t = \sum_{k=0}^{T-t-1} \gamma^k R_{t+k+1}
+\end{align}$$
+
+including the possibility that $$T = \infty$$ or $$\gamma = 1$$ (but not both).
