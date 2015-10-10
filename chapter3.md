@@ -62,3 +62,26 @@ We want to maximize the *expected return*.
 $$\begin{align}
 G_t = R_{t+1} + R_{t+2} + R_{t+3} + ... + R_T
 \end{align}$$
+
+There is two kind of problems:
+- episodic problems
+  - there are episodes which ends in a special state called the *terminal state*
+  - followed by a reset to a standard starting state.
+- continiuing problems
+  - the opposite of *episodic problems*
+  - in this case the final step $$T = \infty$$
+
+We will use an other mathematical definition of *returns* to simplify both problems
+
+$$\begin{align}
+G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = \sum_{k=0}^{infty} \gamma^2 R_{t+k+1}
+
+0 \leq \gamma \leq 1
+\end{align}$$
+
+$$\gamma$$ is called the *discount rate*.
+
+The discrount rate determines the present value of future rewards.
+The higher $$\gamma$$ is, the more strongly the objective takes futures rewards into account
+
+###3.4 Unified Notation For Episodic and Continuing Tasks
