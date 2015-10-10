@@ -259,9 +259,9 @@ For finite MDPs, we can define an :
 $$v_*(s) = max_{\pi} v_{\pi}(s)$$
 
 - *optimal action-value function* :
-  - for all $$s \in \mathcal{S}$$ and $$a \in \mathcall{A(s)}$$
+  - for all $$s \in \mathcal{S}$$ and $$a \in \mathcal{A(s)}$$
 
-$$q_*(s,a) = max_{\pi} q_{\pi}(s,a)
+$$q_*(s,a) = max_{\pi} q_{\pi}(s,a) $$
 
 - We can write $$q_*$$ in terms of $$v_*$$ as follows:
 
