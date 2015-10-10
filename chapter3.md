@@ -274,20 +274,20 @@ in a special form without reference to any specific policy.
 
 This is the Bellman equation for $$v_*$$ or the **Bellman optimality equation**.
 $$\begin{align}
-v_*(s) = \max_{a \in \mathcal{A(s)}} q_{\pi_*}(s, a) \\
-      &= \max_{a} \mathbb{E}_{\pi_*} [G_t | S_t = s, A_t = a] \\
-      &= \max_{a} \mathbb{E}_{\pi_*} [\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s, A_t = a] \\
-      &= ... \\
-      &= \max_{a} \mathbb{E}_{\pi_*} [R_{t+1} + \gamma v_*(S_{t+1}) | S_t = s, A_t = a] \\
-      &= \max_{a \in \mathcal{A(s)}} \sum_{s',r} p(s',r|s,a)[r + \gamma v_*(s')]
+v_*(s) &= \max_{a \in \mathcal{A(s)}} q_{\pi_*}(s, a)\\
+       &= \max_{a} \mathbb{E}_{\pi_*} [G_t | S_t = s, A_t = a]\\
+       &= \max_{a} \mathbb{E}_{\pi_*} [\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s, A_t = a]\\
+       &= \dotsi\\
+       &= \max_{a} \mathbb{E}_{\pi_*} [R_{t+1} + \gamma v_*(S_{t+1}) | S_t = s, A_t = a]\\
+       &= \max_{a \in \mathcal{A(s)}} \sum_{s',r} p(s',r|s,a)[r + \gamma v_*(s')]
 \end{align}$$
 
 The last two equation are two forms of the Bellman optimality equation for $$v_*$$
 The Bellman optimality equation for $$q_*$$ is
 
 $$\begin{align}
-q_*(s,a) = \mathbb{E} [R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a') | S_t = s, A_t = a] \\
-        &= \sum_{s',r} p(s',r |s, a) [ r+ \gamma \max_{a'} q_*(s', a') ]
+q_*(s,a) &= \mathbb{E} [R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}, a') | S_t = s, A_t = a]\\
+         &= \sum_{s',r} p(s',r |s, a) [ r+ \gamma \max_{a'} q_*(s', a') ]
 \end{align}$$
 
 For finite MDPs, the Bellman optimality equation has a unique solution independent of the policy.
