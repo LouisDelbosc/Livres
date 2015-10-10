@@ -222,11 +222,11 @@ A fundamental property of value functions used throughout reinforcement learning
 dynamic programming is thath they satisfy particular recursive relationship.
 
 $$\begin{align}
-v_{\pi}(s) = \mathbb{E}_{\pi} [G_t| S_t = s] \\
-          &= \mathbb{E}_{\pi} \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right] \\
-          &= \mathbb{E}_{\pi} \left[ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} | S_t = s \right] \\
-          &= ... \\
-          &= \sum_{a} \pi(a|s) \sum_{s', r} p(s', r|s, a) [r + \gamma v_{\pi}(s')]
+v_{\pi}(s) &= \mathbb{E}_{\pi} [G_t| S_t = s]\\
+           &= \mathbb{E}_{\pi} \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right]\\
+           &= \mathbb{E}_{\pi} \left[ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} | S_t = s \right]\\
+           &= \dotsi\\
+           &= \sum_{a} \pi(a|s) \sum_{s', r} p(s', r|s, a) [r + \gamma v_{\pi}(s')]
 \end{align}$$
 
 This equation is the *Bellman equation for* $$v_{\pi}$$.
