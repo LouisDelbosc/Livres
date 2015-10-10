@@ -149,3 +149,38 @@ The Markov property is important in reinforcement learning because
 decision and values are assumed to be a function only of the current state.
 Even if your case is not stricly Markov, the theory developped for 
 the Markov case are still helpful to understand the behavior of the algorithms.
+
+###3.6 Markov Decision Processes
+
+*Markov decision process* or MDP: A reinforcement learning task that satisfies the Markov property.
+If the state and action spaces are finite, then it is called a *finite MDP*.
+
+A particulare finite MDP is defined by its state and action sets
+and by the one-step dynamics of the environment. Given any state and action $$s$$ and $$a$$,
+the probability of each possible pair of next state and reward, $$s', r$$ is denoted
+
+$$\begin{align}
+p(s', r|s, a) = P_r{S_{t+1} = s', R_{t+1} = r | S_t = s, A_t = a}
+\end{align}$$
+
+These quantitites completely specify the dynamics of a finite MDP.
+
+Given the dynamics as specified, on can compute anything else one might want to know
+about the environment, such as 
+
+- the expected rewards for *state-action pairs*
+$$\begin{align}
+r(s, a) = \mathbb{E}[R_{t+1} | S_t = s, A_t = a] = \sum_{r \in \mathcal{R}} r \sum_{s' \in \mathcal{S}} p(s', r| s, a)
+\end{align}$$
+
+- the *state-transition probabilities*
+$$\begin{align}
+p(s'|s,a) = P_r{S_{t+1} = s' | S_t = s, A_t = a} = \sum_{r \in \mathcal{R}} p(s', r|s, a)
+\end{align}$$
+
+- the expcted rewards for *state-action-next-state triple*
+$$\begin{align}
+r(s,a,s') = \mathbb{E} [R_{t+1} | S_t = s, A_t = a, S_{t+1} = s'] = \frac{\sum_{r \in \mathcal{R}} rp(s', r| s, a)}{p(s'|s, a)}
+\end{align}$$
+
+
