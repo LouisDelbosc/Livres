@@ -178,7 +178,7 @@ $$\begin{align}
 p(s'|s,a) = P_r{S_{t+1} = s' | S_t = s, A_t = a} = \sum_{r \in \mathcal{R}} p(s', r|s, a)
 \end{align}$$
 
-- the expcted rewards for *state-action-next-state triple*
+- the expected rewards for *state-action-next-state triple*
 $$\begin{align}
 r(s,a,s') = \mathbb{E} \left[R_{t+1} | S_t = s, A_t = a, S_{t+1} = s' \right] = \frac{\sum_{r \in \mathcal{R}} rp(s', r| s, a)}{p(s'|s, a)}
 \end{align}$$
