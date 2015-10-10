@@ -180,7 +180,7 @@ p(s'|s,a) = P_r{S_{t+1} = s' | S_t = s, A_t = a} = \sum_{r \in \mathcal{R}} p(s'
 
 - the expcted rewards for *state-action-next-state triple*
 $$\begin{align}
-r(s,a,s') = \mathbb{E} [R_{t+1} | S_t = s, A_t = a, S_{t+1} = s'] = \frac{\sum_{r \in \mathcal{R}} rp(s', r| s, a)}{p(s'|s, a)}
+r(s,a,s') = \mathbb{E} \left[R_{t+1} | S_t = s, A_t = a, S_{t+1} = s' \right] = \frac{\sum_{r \in \mathcal{R}} rp(s', r| s, a)}{p(s'|s, a)}
 \end{align}$$
 
 ###3.7 Value Functions
@@ -194,7 +194,7 @@ It is the expected return when starting in $$s$$ and following $$\pi$$ thereafte
 For MDPs, we can define it formally as:
 
 $$\begin{align}
-v_{\pi}(s) = \mathbb{E}_{\pi} [G_t| S_t = s] = \mathbb{E}_{\pi}[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s]
+v_{\pi}(s) = \mathbb{E}_{\pi} [G_t| S_t = s] = \mathbb{E}_{\pi} \left[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right]
 \end{align}$$
 
 where $$\mathbb{E}_{\pi}[.]$$ denotes the expected value of a random variable
@@ -206,7 +206,7 @@ denoted $$q_{\pi}(s, a)$$ as the expected return starting from $$s$$, taking the
 $$a$$, and thereafter following policy $$\pi$$:
 
 $$\begin{align}
-q_{\pi}(s,a) = \mathbb{E}_{\pi} [G_t| S_t = s, A_t = a] = \mathbb{E}_{\pi}[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s, A_t = a]
+q_{\pi}(s,a) = \mathbb{E}_{\pi} [G_t| S_t = s, A_t = a] = \mathbb{E}_{\pi} \left[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s, A_t = a \right]
 \end{align}$$
 
 We call the function $$q_{\pi}$$ the *action-value function for policy* $$\pi$$
@@ -223,8 +223,8 @@ dynamic programming is thath they satisfy particular recursive relationship.
 
 $$\begin{align}
 v_{\pi}(s) = \mathbb{E}_{\pi} [G_t| S_t = s] \\
-& = \mathbb{E}_{\pi} [ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s ] \\
-& = \mathbb{E}_{\pi} [ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} | S_t = s ] \\
+& = \mathbb{E}_{\pi} \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right] \\
+& = \mathbb{E}_{\pi} \left[ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} | S_t = s \right] \\
 & = ... \\
 & = \sum_{a} \pi(a|s) \sum_{s', r} p(s', r|s, a) [r + \gamma v_{\pi}(s')]
 \end{align}$$
