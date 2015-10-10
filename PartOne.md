@@ -35,7 +35,9 @@ It is essential to know when to explore and when to exploit.
 
 We can estimate Qt(a) as :
 
-$$Q_t(a) = \sum_{1}^{N_t(a)}\frac{R_i}{N_t(a)}$$
+$$\begin{align}
+Q_t(a) = \sum_{i=1}^{N_t(a)}\frac{R_i}{N_t(a)}
+\end{align}$$
 
 Or the mean of the Reward
 
@@ -67,7 +69,9 @@ Of course this is only available if we have a static problem which is not the ca
 
 Since each action as to keep a records of the *rewards*
 
-$$Q_t(a) = \frac{[R_1 + R_2 + ... + R_{N_t(a)}]}{N_t(a)}$$
+$$\begin{align}
+Q_t(a) = \frac{[R_1 + R_2 + ... + R_{N_t(a)}]}{N_t(a)}
+\end{align}$$
 
 
 You can't implement this equation like this because the more reward you'll get, the more memory you'll need.
@@ -106,16 +110,22 @@ Q_{k+1} &= Q_k + \alpha[R_k - Q_k]\\
 \end{align}$$
 
 We call this a weighted average because the sum of the weights is :
-$$(1 - \alpha)^k + \sum_{i=1}^{k} \alpha (1-\alpha)^{k-i} = 1$$
+$$\begin{align}
+(1 - \alpha)^k + \sum_{i=1}^{k} \alpha (1-\alpha)^{k-i} = 1
+\end{align}$$
 
 This is called and *exponential, recency-weighted average.*
 Sometimes it is convenient to vart the step-size parameter from step to step.
 
 A well-known result in stochastic approximation theory gives us the conditions required to assure convergence with probability 1.
 
-$$\sum_{k=1}^{\infty} \alpha_k(a) = \infty$$
+$$\begin{align}
+\sum_{k=1}^{\infty} \alpha_k(a) = \infty
+\end{align}$$
 **and**
-$$\sum_{k=1}^{\infty} \alpha^2_k(a) < \infty$$
+$$\begin{align}
+\sum_{k=1}^{\infty} \alpha^2_k(a) < \infty
+\end{align}$$
 
 The first condition is required to guarantees that the steps are large enough to eventually overcome any initial conditions or random fluctuations.
 The second condition guarantees that eventually the steps become small enough to assure convergence
@@ -136,9 +146,9 @@ Anyway, the beginning of time occurs only once so we should not focus on it too 
 
 The greedy actions are those that look best at present, but some of the other actions may actually be better.
 We can select our action with an other equation than (E1).
-$$
+$$\begin{align}
 A_t = argmax_a \left[ Q_t(a) + c \sqrt{\frac{ln(t)}{N_t(a)}}\right]
-$$
+\end{align}$$
 (see page 55, equation 2.8 from pdf for a more visible version of the equation)
 
 This is called *upper confidence bound* action selection.
