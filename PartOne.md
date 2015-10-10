@@ -27,11 +27,11 @@ It is essential to know when to explore and when to exploit.
 ###2.2 Action-Value Methods
 
 **Notation**:
-- $$\(a\)$$: action
-- $$\(q(a)\)$$: The value of action
-- $$\(Q_t(a)\)$$: the estimated value on the *t*-th time step of a
-- $$\(R_t\)$$: the reward the *t*-th time
-- $$\(N_t(a)\)$$: the time a has been chosen at time t
+- $$a$$: action
+- $$q(a)$$: The value of action
+- $$Q_t(a)$$: the estimated value on the *t*-th time step of a
+- $$R_t$$: the reward the *t*-th time
+- $$N_t(a)$$: the time a has been chosen at time t
 
 We can estimate Qt(a) as :
 
@@ -49,16 +49,16 @@ It is the *greedy* action.
 
 $$A_t = argmax_a Qt(a)$$
 
-$$\(argmax(a)\)$$ denotes the value of a at which the expression that follows is maximized
+$$argmax(a)$$ denotes the value of a at which the expression that follows is maximized
 Greedy action selection always exploits current knowledge to maximize immediate reward.
 
 A simple alternative is to behave greedily most of the time but every once in a while, say with small probability $$\epsilon$$, instead to select randomly from among all the actions with equal probability.
-We call it the *$$\(\epsilon\)$$-greedy* methods
+We call it the *$$\epsilon$$-greedy* methods
 
 *Advantage*:
 - On a long run, all $$Q_t(a)$$ will converge to $$q(a)$$
 
-Choosing the $$\(\epsilon\)$$ (IE probability to not play the estimated maximum value action) is  important
+Choosing the $$\epsilon$$ (IE probability to not play the estimated maximum value action) is  important
 For example if we take a very low $$\epsilon$$ then we will explore slowly, and we will converge to the real maximum later.
 But if we chose a high $$\epsilon$$ then we might find it faster but after we will only play the best action 1-$$\epsilon$$ (because $$\epsilon$$ time we will play a random move which is not the estimated max).
 A fix at this issue is to change the $$\epsilon$$ over the time. High in the beginning but decreasing over time so we explore a lot early and we play the optimal move at the end.
@@ -146,9 +146,9 @@ Anyway, the beginning of time occurs only once so we should not focus on it too 
 
 The greedy actions are those that look best at present, but some of the other actions may actually be better.
 We can select our action with an other equation than (E1).
-
-$$A_t = argmax_a \left[ Q_t(a) + c \sqrt{\frac{ln(t)}{N_t(a)}}\right]$$
-
+$$\begin{align}
+A_t = argmax_a \left[ Q_t(a) + c \sqrt{\frac{ln(t)}{N_t(a)}}\right]
+\end{align}$$
 (see page 55, equation 2.8 from pdf for a more visible version of the equation)
 
 This is called *upper confidence bound* action selection.
