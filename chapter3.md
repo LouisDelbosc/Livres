@@ -223,10 +223,10 @@ dynamic programming is thath they satisfy particular recursive relationship.
 
 $$\begin{align}
 v_{\pi}(s) = \mathbb{E}_{\pi} [G_t| S_t = s] \\
-& = \mathbb{E}_{\pi} \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right] \\
-& = \mathbb{E}_{\pi} \left[ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} | S_t = s \right] \\
-& = ... \\
-& = \sum_{a} \pi(a|s) \sum_{s', r} p(s', r|s, a) [r + \gamma v_{\pi}(s')]
+         & = \mathbb{E}_{\pi} \left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right] \\
+         & = \mathbb{E}_{\pi} \left[ R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} | S_t = s \right] \\
+         & = ... \\
+         & = \sum_{a} \pi(a|s) \sum_{s', r} p(s', r|s, a) [r + \gamma v_{\pi}(s')]
 \end{align}$$
 
 This equation is the *Bellman equation for* $$v_{\pi}$$.
@@ -243,3 +243,5 @@ of occuring.
 The value function $$v_{\pi}$$ is the unique solution to it's Bellman equation.
 We show in subsequent chapters how this Bellman equation forms the basis of a number of ways
 to compute, approxumate, and learn $$v_{\pi}$$.
+
+###3.8 Optimal Value Functions
