@@ -2,5 +2,5 @@
 
 * [Introduction](README.md)
 * [Chapter I](introduction_to_reinforcement_learning.md)
-* [Part I](PartOne.md)
-
+* [Chapter II](PartOne.md)
+* [Chapter III](chapter3.md)
