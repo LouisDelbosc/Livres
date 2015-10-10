@@ -309,3 +309,26 @@ The methods of dynamic programming can be related even more closely to the Bellm
 optimality equation. Many reinforcement learning methods can be clearly understood as
 approximately solving the Bellman optimality equation, using actual experience transitions
 in place of knowledge of the expected transitions.
+
+###3.9 Optimality and Approximation
+
+Optimal policies can be generated only with extreme computational cost so it can be rarely used in practice.
+A critical aspect of the problem facing the agent is always the computational power 
+available to it, in particular, the amount of computation it can perform in a single time step.
+
+Memory is also an important constraint. 
+A large amount of memory is often required to build up approximations of value functions, policies and modles.
+In tasks with small, finite state sets, it is possible to form these approximations using 
+arrays or tables with one entry for each state (or state-action pair).
+This we calle the **tabular** case, and the corresponding methods we call **tabular methods**.
+In many cases of practical interest there are far more states than could possibly be entries in a table. 
+In these cases the functions must be approximated, using some sort of more compact 
+parameterized function representation.
+
+Our framing of the reinforcement learning problem forces us to settle for approximations. 
+But it can also be an opportunities to put more effort in approximation which seems useful.
+The on-line nature of reinforcement learning makes it possible to approximate optimal 
+policies in ways that put more ffort into learning to make good decision for frequently 
+encountered state.
+This is one key property that distinguishes reinforcement learning from other approaches 
+to approximately solving MDPs.
