@@ -14,7 +14,10 @@ Some definition:
 The agent interact with its environment at discrete time steps.
 At each time step $$t$$ the agent receives some representation of the environment's *state*.
 
-Let $$S_t \in \mathcal{S} A_t \in \mathcal{A(S_t)} R_{t+1} \in \mathcal{R} \subset \mathbb{R}$$ 
+Let 
+- $$S_t \in \mathcal{S}$$
+- $$A_t \in \mathcal{A(S_t)}$$
+- $$R_{t+1} \in \mathcal{R} \subset \mathbb{R}$$ 
 
 Where :
 - $$\mathcal{S}$$ is the set of all possible states
@@ -76,10 +79,10 @@ We will use an other mathematical definition of *returns* to simplify both probl
 $$\begin{align}
 G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = \sum_{k=0}^{\infty} \gamma^2 R_{t+k+1}
 
-0 \leq \gamma \leq 1
 \end{align}$$
 
-$$\gamma$$ is called the *discount rate*.
+$$0 \leq \gamma \leq 1$$
+is called the *discount rate*.
 
 The discrount rate determines the present value of future rewards.
 The higher $$\gamma$$ is, the more strongly the objective takes futures rewards into account
@@ -128,18 +131,18 @@ In the moste general, causal case this reponse may depend on everything that has
 In this case the dynamics can be defined only by specifuing the complete probability distribution:
 
 $$\begin{align}
-P_r{R_{t+1} = r, S_{t+1} = s'| S_0, A_0, R_1, ..., S_{t-1}, A_{t-1}, R_t, S_t, A_t}
+P_r\{R_{t+1} = r, S_{t+1} = s'| S_0, A_0, R_1, ..., S_{t-1}, A_{t-1}, R_t, S_t, A_t\}
 \end{align}$$
 
 However, if the state has the *Markov Property*, we can simplify the equation:
 
 $$\begin{align}
-P_r{R_{t+1} = r, S_{t+1} = s'| S_t, A_t}
+P_r\{R_{t+1} = r, S_{t+1} = s'| S_t, A_t\}
 \end{align}$$
 
 If an environment has the Markov property,
 then its one-step dynamics enable us to predict the next state and expected next reward.
-By iterating this equation, one can predict all future state and expected rewards fromknowledge only of the current state.
+By iterating this equation, one can predict all future state and expected rewards from knowledge only of the current state.
 It also follows that Markov states provide the best possiblebasis for choosing actions.
 
 Even when the state signal is non-Markov, it is still appropriate
@@ -160,7 +163,7 @@ and by the one-step dynamics of the environment. Given any state and action $$s$
 the probability of each possible pair of next state and reward, $$s', r$$ is denoted
 
 $$\begin{align}
-p(s', r|s, a) = P_r{S_{t+1} = s', R_{t+1} = r | S_t = s, A_t = a}
+p(s', r|s, a) = P_r\{S_{t+1} = s', R_{t+1} = r | S_t = s, A_t = a\}
 \end{align}$$
 
 These quantitites completely specify the dynamics of a finite MDP.
@@ -242,7 +245,7 @@ of occuring.
 
 The value function $$v_{\pi}$$ is the unique solution to it's Bellman equation.
 We show in subsequent chapters how this Bellman equation forms the basis of a number of ways
-to compute, approxumate, and learn $$v_{\pi}$$.
+to compute, approximate, and learn $$v_{\pi}$$.
 
 ###3.8 Optimal Value Functions
 
