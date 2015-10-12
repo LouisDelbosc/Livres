@@ -3,11 +3,9 @@
 ##Chapter 1
 ## The Reinforcement Learning Problem
 
-Reinforcement learning is about understanding cause and effects. It is focus around goal.
+Reinforcement learning is about understanding cause and effects. It is focus around **goal**.
 
 ###1.1 Reinforcement Learning
-
-In an essential way they are *closed-loop* problems because the learning system's actions influence its later inputs
 
 Reinforcement learning problems involve learning what to do -- how to map situations to actions -- so as to maximize a numerical reward signal.
 
@@ -21,6 +19,8 @@ There are three most important distinguishing feature of reinforcement learn  pr
 - where the consequences of actions, including reward signals, play out over extended time periods
 
 
+In an essential way they are *closed-loop* problems because the learning system's actions influence its later inputs
+
 *How to define a reinforcement learning method:*
 **Create a agent interacting with its environment to achieve a goal**
 The goal must be related to the state of the environment
@@ -30,7 +30,7 @@ Three aspects :
 - goal
 
 Supervised and unsupervised learning achieve different goal and aim at different results.
-Unsupervised aims at finding hidden structures.
+Unsupervised aims at finding hidden structures and supervised aims at classified new structures within an already known classification.
 Moreover there is exploitation-exploration dilemma. The agent has to choose but also keep exploring new possibilities.
 This dilemma does not appear in supervised and unsupervised learning (at least in their purest forms).
 
