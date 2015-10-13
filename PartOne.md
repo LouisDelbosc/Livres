@@ -89,7 +89,7 @@ We just need to store the iteration (k), and the previous reward.
 We also need an arbitrary $$Q_1$$
 
 The general form is :
-**NewEstimate <-- OldEstimate + StepSize [ Target - OldEstimate ]**
+$$NewEstimate \leftarrow OldEstimage + SteSize [ Target - OldEstimate]$$
 
 The expression *[Target - OldEstimate]* is an *error* in the estimate.
 It is reduced by Taking a step toward the "Target".
