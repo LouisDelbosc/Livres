@@ -52,7 +52,10 @@ This algorithm is called *iterative policy evaluation*.
 
 $$k \rightarrow \infty \Rightarrow v_k \rightarrow v_{\pi}$$
 
-We replace the value of the old state by a new value which will also be replace later.
+- *full backup*
+  - replace the value of the old state by a new value and this at each step
+- *backup done in a sweep*
+  - modifying the new vector directly without passing by a temporary vector
 
 ![Figure 4.1: Iterative policy evaluation](images/figure4_1.png)
 
@@ -104,3 +107,27 @@ This algorithm is a way of finding a optimal policy is called *policy iteration*
 It is worth noting that the *policy iteration* increases greatly the speed of policy evaluation.
 Usually, policy iteration converges in few iterations.
 
+###4.4 Value Iteration
+
+One drawback to policy iteration is that each of its iterations involves policy evaluation.
+The computation cost might be high.
+We must be able to truncate the useless iteration (when we get a policy as efficient as the optimal one).
+
+- *value iteration*
+  - special case when policy evaluation is stopped after one sweep
+  - It can be written as a particularly simple backup operation that combines the policy improvement and truncated policy evaluation steps
+
+$$\begin{align}
+v_{k+1}(s) &= \max_a \mathbb{E} [R_{t+1} + \gamma v_k(S_{t+1}) | S_t = s, A_t = a]\\
+           &= \max_a \sum_{s',r}p(s',r|s,a) [r+ \gamma v_k(s')]
+\end{align}$$
+
+Value iteration is obtained simply by turning the Bellman optimality equation into a update rule.
+The value iteration backup is identical to the policy evaluation backup except that it 
+requires the maximum to be taken over all actions.
+
+Value iteration effectively combines, in each of its sweeps, one sweep of policy evaluation and one sweep of policy improvement.
+Often, it can converge faster interposing multiple policy evaluation sweeps between each policy improvement sweep.
+All of these algorithms converge to an optimal policy for discounted finite MDPs.
+
+![figure4.5](images/figure4_5)
