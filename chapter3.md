@@ -99,7 +99,7 @@ In continuing task we have a infinite sum.
 Considering episode termination to be the entering of a special *absorbing state*
 that transition only to itself and generates only rewards of zero.
 
-![Figure 2: state transition diagram for episodic task](images/abs_state.pgn)
+![Figure 2: state transition diagram for episodic task](images/abs_state.png)
 
 We can now define the return as :
 $$\begin{align}
