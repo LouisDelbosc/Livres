@@ -31,7 +31,7 @@ q_*(s,a) &= \mathbb{E} [R_{t+1} + \gamma \max_{a'} q_*(S_{t+1}) | S_t = s, A_t =
 
 $$\begin{align}
 v_{\pi}(s) &= \mathbb{E}_{\pi} [ R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dotso | S_t = s ]\\
-       &= \mathbb{E}_{\pi} [R_{t+1} + \gammav_{\pi}(S_{t+1}) | S_t = s]\\
+       &= \mathbb{E}_{\pi} [R_{t+1} + \gamma v_{\pi}(S_{t+1}) | S_t = s]\\
        &= \sum_a \pi(a|s) \sum_{s', r}p(s', r|s, a) [r + \gamma v_{\pi)(s')}]
 \end{align}$$
 
@@ -57,7 +57,7 @@ We replace the value of the old state by a new value which will also be replace 
 ![Figure 4.1: Iterative policy evaluation](images/figure4_1.png)
 
 To stop the algorithm (since it converges in the limit) we test the quantity
-$$\max_{s_\mathcal{S}} |v_{k+1(s) - v_k(s)|$$. When it is sufficiently small we stop the loop.
+$$\max_{s \in \mathcal{S}} |v_{k+1}(s) - v_k(s)|$$. When it is sufficiently small we stop the loop.
 
 ###4.2 Policy Improvement
 
@@ -87,3 +87,7 @@ q_{\pi} (s, \pi'(s)) = \sum_a \pi'(a|s) q_{\pi}(s,a)
 in addition, if there are ties in policy improvement steps then in the stochastic case 
 we need not select a single action from among them. Instead, each maximizing action can 
 be given a portion of the probability of being selected in the new greedy policy.
+
+###4.3 Policy Iteration
+
+
