@@ -90,4 +90,17 @@ be given a portion of the probability of being selected in the new greedy policy
 
 ###4.3 Policy Iteration
 
+The goal is to improve $$\pi$$ using $$v_{\pi}$$, once we get $$\pi'$$ we can do it again.
+
+$${\pi}_0 \rightarrow^{\mathbb{E}} v_{\pi_0} \rightarrow^{mathbb{I}} \pi_1 \rightarrow^{\mathbb{E}} \dotso \rightarrow^{\mathbb{I}} \pi_* \rightarrow^{\mathbb{E}} v_*
+
+Each policy is guaranteed to be a strict improvement over the previous one.
+
+![Figure4.3](images/figure4_3.pgn)
+
+If you are using a finite MDP, this process must converge to an optimal policy.
+
+This algorithm is a way of finding a optimal policy is called *policy iteration*.
+It is worth noting that the *policy iteration* increases greatly the speed of policy evaluation.
+Usually, policy iteration converges in few iterations.
 
