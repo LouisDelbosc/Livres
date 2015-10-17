@@ -3,11 +3,9 @@
 ##Chapter 1
 ## The Reinforcement Learning Problem
 
-Reinforcement learning is about understanding cause and effects. It is focus around goal.
+Reinforcement learning is about understanding cause and effects. It is focus around **goal**.
 
 ###1.1 Reinforcement Learning
-
-In an essential way they are *closed-loop* problems because the learning system's actions influence its later inputs
 
 Reinforcement learning problems involve learning what to do -- how to map situations to actions -- so as to maximize a numerical reward signal.
 
@@ -21,6 +19,8 @@ There are three most important distinguishing feature of reinforcement learn  pr
 - where the consequences of actions, including reward signals, play out over extended time periods
 
 
+In an essential way they are *closed-loop* problems because the learning system's actions influence its later inputs
+
 *How to define a reinforcement learning method:*
 **Create a agent interacting with its environment to achieve a goal**
 The goal must be related to the state of the environment
@@ -30,8 +30,9 @@ Three aspects :
 - goal
 
 Supervised and unsupervised learning achieve different goal and aim at different results.
-Unsupervised aims at finding hidden structures.
-Moreover there is exploitation-exploration dilemma. The agent has to choose but also keep exploring new possibilities.
+Unsupervised aims at finding hidden structures and supervised aims at classified new structures within an already known classification.
+
+A other difference between these machine learning algorithm and reinforcement is the exploitation-exploration dilemma. The agent has to choose but also keep exploring new possibilities.
 This dilemma does not appear in supervised and unsupervised learning (at least in their purest forms).
 
 
@@ -52,11 +53,10 @@ You can identify 4 main sub-elements of a reinforcement learning system:
     - If policy A give low reward => policy must be change to choose other action in this situation
   - It general, reward signals may be stochastic functions of the state of the environment and the actions taken
 - a *value function*
-  - Its goal is to evaluate a position to the long run
+  - Its goal is to evaluate a position to the long run, to make an estimation of the future reward the agent can get
   - Value of state = total amount of reward an agent can expect to accumulate over the future, starting from that state
-  - The only goal of value is for the agent to get more reward
-  - But to evaluate a position we look at the value
-  - Hard to determine and have to be change overtime to stick to the environment
+  - To evaluate a position/state we look at the value function
+  - This function is hard to determine and have to be change overtime to stick to the environment
   - Value estimation has a central role in reinforcement learning
 - a *model* of the environment (optional)
   - It mimics the behavior of the environment
@@ -75,7 +75,7 @@ Evolutionary methods do not act this way.
 Other methods like *policy gradient methods* do not have any value function but still are reinforcement.
 They estimate the directions the parameters should be adjusted in order to most rapidly improve a policy's performance.
 
-Some comment on reinforcement learning and optimization methods because it is a source of misunderstanding.
+We have to take care of some possible misunderstanding about optimization in reinforcement learning.
 Trying to maximized a quantity does not mean that that quantity is ever maximized.
 Reinforcement learning always try to increase the amount of reward it receives but many factors can prevent it from achieving the maximum, even if one exists.
 **Optimization is not the same as optimality.**

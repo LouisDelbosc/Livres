@@ -17,7 +17,8 @@ Quick problem presentation:
 - Your goal is to maximize the expected total reward over some time period
   - for example 1000 selections or a time steps
 
-We assume we do not have access to the value of each action.
+We assume we do not have access to the value (average reward) of each action, otherwise the solution is simple, we just do the action with the higher average reward.
+
 We are confronted to the **exploration-exploitation dilemma**.
 - *Exploitation*: Taking the best reward known
 - *Exploration*: Try to explore the unknown space of action to find better reward
@@ -88,7 +89,7 @@ We just need to store the iteration (k), and the previous reward.
 We also need an arbitrary $$Q_1$$
 
 The general form is :
-**NewEstimate <-- OldEstimate + StepSize [ Target - OldEstimate ]**
+$$NewEstimate \leftarrow OldEstimage + SteSize [ Target - OldEstimate]$$
 
 The expression *[Target - OldEstimate]* is an *error* in the estimate.
 It is reduced by Taking a step toward the "Target".
