@@ -59,3 +59,31 @@ We replace the value of the old state by a new value which will also be replace 
 To stop the algorithm (since it converges in the limit) we test the quantity
 $$\max_{s_\mathcal{S}} |v_{k+1(s) - v_k(s)|$$. When it is sufficiently small we stop the loop.
 
+###4.2 Policy Improvement
+
+Finding the value function of a policy is important, but maybe our policy isn't the 
+best one and need some improvement.
+For some state $$s$$ we would like to know whether or not we should change the policy.
+To answer this problem is to consider selecting $$a$$ in $$s$$ and thereafter folloxing the existing policy $$\pi$$.
+
+$$\begin{align}
+q_{\pi}(s,a) &= \mathbb{E} [R_{t+1} + \gamma v_{\pi}(S_{t+1}) | S_t = s, A_t = a]\\
+       &= \sum_{s', r} p(s', r | s, a) [r + \gamma v_{\pi}(s')]
+\end{align}$$
+
+If you have a better value, you have to change the policy to take the new action $$a$$ when
+you are in the state $$s$$
+
+If $$q_{\pi}(s, \pi'(s) \geq v_{\pi}(s)) \Rightarrow v_{\pi'} \geq v_{\pi}(s)$$
+
+This is true for deterministic policies but it can be easily extended to stochastic policies.
+In particular, the policy improvement theorem carries through as stated for the stochastic 
+case, under the natural definition:
+
+$$\begin{align}
+q_{\pi} (s, \pi'(s)) = \sum_a \pi'(a|s) q_{\pi}(s,a)
+\end{align}$$
+
+in addition, if there are ties in policy improvement steps then in the stochastic case 
+we need not select a single action from among them. Instead, each maximizing action can 
+be given a portion of the probability of being selected in the new greedy policy.
