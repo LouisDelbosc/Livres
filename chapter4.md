@@ -99,7 +99,7 @@ $${\pi}_0 \xrightarrow{\mathbb{E}} v_{\pi_0} \xrightarrow{\mathbb{I}} \pi_1 \xri
 
 Each policy is guaranteed to be a strict improvement over the previous one.
 
-![Figure4.3](images/figure4_3.pgn)
+![Figure4.3](images/figure4_3.png)
 
 If you are using a finite MDP, this process must converge to an optimal policy.
 
