@@ -95,7 +95,7 @@ be given a portion of the probability of being selected in the new greedy policy
 
 The goal is to improve $$\pi$$ using $$v_{\pi}$$, once we get $$\pi'$$ we can do it again.
 
-$${\pi}_0 \rightarrow^{\mathbb{E}} v_{\pi_0} \rightarrow^{mathbb{I}} \pi_1 \rightarrow^{\mathbb{E}} \dotso \rightarrow^{\mathbb{I}} \pi_* \rightarrow^{\mathbb{E}} v_*
+$${\pi}_0 \xrightarrow{\mathbb{E}} v_{\pi_0} \xrightarrow{\mathbb{I}} \pi_1 \xrightarrow{\mathbb{E}} \dotso \xrightarrow{\mathbb{I}} \pi_* \xrightarrow{\mathbb{E}} v_*$$
 
 Each policy is guaranteed to be a strict improvement over the previous one.
 
