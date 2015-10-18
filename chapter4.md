@@ -162,3 +162,24 @@ Asynchronous algorithms:
 For example, we can apply backups to states as the agent visits them. This makes it 
 possible to focus the DP algorithm's backup onto parts of the state set that are most
 relevent to the agent.
+
+###4.6 Generalized Policy Iteration
+
+- Policy evaluation
+  - making the value function consistent with the current policy
+- Policy improvement
+  - making the policy greedy with respect to the current value function
+
+- *Generalized policy iteration* (GPI)
+  - refer to the general idea of letting policy evaluation and policy improvement processes interact, independent of the granularity and other details of the two processes.
+  - The evaluation and improvement processes can be viewed as both competing and cooperating
+    - they compete because they pull in opposing directions
+    - Making the policy greedy with respect to the value function makes the value function incorrect for the changed policy
+    - making the value function consistent with the policy cause that policy no longer to be greedy
+  - In the long run, these two processes interact to find a single joint solution
+    - the optimal value function and an optimal policy
+
+![Figure 4.7](images/figure4_7.png)
+
+The two processes together achieve the overall goal of optimality even though neither is 
+attempting to achieve it directly.
