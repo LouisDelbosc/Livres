@@ -28,13 +28,13 @@ the returns observed after visits to that state.
 
 Suppose we wish to estimate $$v_{\pi}(s)$$, the value of a state $$s$$ under policy $$\pi$$.
 - *visit* is an occurence of state $$s$$ in an episode
-- $$ss may be visited multiple times in the same episode
-  - *first visite* to s is the first time it is visited in an episode
+- $$s$$ may be visited multiple times in the same episode
+  - *first visite* to $$s$$ is the first time it is visited in an episode
 - The *first-vist MC method*
-  - it estimates $$v_{\pi}$$ as the average of the returns following first visits to s
+  - it estimates $$v_{\pi}$$ as the average of the returns following first visits to $$s$$
 - The *every-visit MC method*
-  - is the average of the returns following all visits to s
-- Both methods converge to $$v_{\pi}$$ as the number of visits (or first visits) to s goes to infinity
+  - is the average of the returns following all visits to $$s$$
+- Both methods converge to $$v_{\pi}$$ as the number of visits (or first visits) to $$s$$ goes to infinity
 
 ![figure 5.1](images/figure5_1.png)
 
@@ -90,7 +90,7 @@ Let's consider the policy evaluation problem for action values.
 
 The only complication is that many state-action pairs may never be visited.
 $$\pi$$ must be a non-deterministic because otherwise we will only observe return for one of the action from each state.
-To compare alternatives, we need to estimate the value of *all* the actions from each state.o
+To compare alternatives, we need to estimate the value of *all* the actions from each state.
 
 This is the general problem of *maintaining exploration*.
 - For policy evaluation to work for action values, we must assure continual exploration
