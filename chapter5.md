@@ -68,3 +68,43 @@ Backup diagrams are pertinent and we can generalize the idea to MC algorithms.
   - this can be attractive when one requires the value of only one subset of states
   - one can generate many sample episodes starting from the states of interest
     - averaging returns from only tese states ignoring all others
+
+###5.2 Monte Carlo Estimation of Action Values
+
+If a model is not available
+- value functions is not enough to determine a policy
+- we have to estimate *action values*
+
+Let's consider the policy evaluation problem for action values.
+- $$q_{\pi}(s,a)$$ is the exepected return when
+  - starting in state $$s$$
+  - taking action $$a$$
+  - following policy $$\pi$$
+- MC methods for this are almost the same as the one presented for state values
+  - except we talk about visits to a state-action pair
+- a state-action $$(s,a)$$ pair is visited 
+  - if a state $$s$$ is visited and an action $$a$$ is taken in it
+- The *every-vist* MC methods and *first-visit* MC method have the same behavior
+  - but instead of state, it is a state-action pair
+  - they converge quadratically (as before) to the true expected values
+
+The only complication is that many state-action pairs may never be visited.
+$$\pi$$ must be a non-deterministic because otherwise we will only observe return for one of the action from each state.
+To compare alternatives, we need to estimate the value of *all* the actions from each state.o
+
+This is the general problem of *maintaining exploration*.
+- For policy evaluation to work for action values, we must assure continual exploration
+  - one solution is 
+    - start in a *stat-action pair*
+    - every pair has a nonzero probability of bein selected as the start
+    - this guarantees that all stat-action pair will be visited an infinite number of times
+    - we call this **the assumption of exploring starts**
+
+- The assumption of exploring starts can be useful
+- but cannot be relied upon in general
+  - particularly when learning directly from actual interaction with an environment
+
+Another solution is to consider only stochastic policy.
+It means all state-action paris can be encoutered with a nonzero probability.
+
+###5.3 Monte Carlo Control
