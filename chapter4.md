@@ -199,3 +199,6 @@ On large state space, asynchronous DP methods are often prefered.
 Synchronous methods require to compute state which may be irrelevant.
 Asynchronous methods can help by only apply DP methods on the state you want.
 You may find good or optimal policies much faster than suncrhonous methods can.
+
+*Bootstraping*
+- update estimates on the basis of other estimates
