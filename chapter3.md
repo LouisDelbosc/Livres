@@ -243,6 +243,8 @@ along with a reward $$r$$.
 The Bellman equation averages over all the possibilities, weighting each by its probability
 of occuring.
 
+![figure 3.4](images/figure3_4.png)
+
 The value function $$v_{\pi}$$ is the unique solution to it's Bellman equation.
 We show in subsequent chapters how this Bellman equation forms the basis of a number of ways
 to compute, approximate, and learn $$v_{\pi}$$.
