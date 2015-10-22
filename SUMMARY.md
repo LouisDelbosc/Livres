@@ -33,4 +33,4 @@
    * [Monte Carlo Prediction](part1/chapter5/5_1.md)
    * [MC Estimation of Action values](part1/chapter5/5_2.md)
    * [MC Control](part1/chapter5/5_3.md)
-
+   * [MC Control without Exploring Starts](part1/chapter5/5_4.md)
